@@ -15,50 +15,66 @@ let capitalize = function(string) {
 // array to store string [rock paper scissors]
 let selectionArray = ['Rock', 'Paper', 'Scissors'];
 let result = 'default'
+let win = 'You Win!'
+let lose = 'You Lose'
 
 //selects at random from the rock paper scissors array
-const computerSelection = selectionArray[Math.floor(Math.random() * selectionArray.length)];
+function computerSelection() {
+    comp = selectionArray[Math.floor(Math.random() * selectionArray.length)];
+    return comp;
+} 
 
 //function to select the winner and print result
 function gameRules(player, computer) {
+    console.log('Player:',player, 'Computer:', computer);
     if (player === computer) {
-
+        return result = 'Tie';
     } else if ((player === 'Rock' || computer === 'Rock') && (player === 'Scissors' || computer === 'Scissors')) {
         if (player === 'Rock') {
-            return result = 'You Win!'
+            return result = win
         } else {
-            return result = 'You Lose'
+            return result = lose
         }
     } else if ((player === 'Scissors' || computer === 'Scissors') && (player === 'Paper' || computer === 'Paper')) {
         if (player === 'Scissors') {
-            return result = 'You Win!'
+            return result = win
         } else {
-            return result = 'You Lose'
+            return result = lose
         }
     } else if ((player === 'Paper' || computer === 'Paper') && (player === 'Rock' || computer === 'Rock')) {
         if (player === 'Paper') {
-            return result = 'You Win!'
+            return result = win
         } else {
-            return result = 'You Lose'
+            return result = lose
         }
     }
+    
 }
 
 function mainGame() {
-    let p = 0;
-    let c = 0;
-    while (p <= 2 && c <= 2) {
-        let playerSelection = capitalize(prompt("Choose your weapon:"));
-        gameRules(playerSelection, computerSelection);
+    let p = 5;
+    let c = 5;
+    while (p > 0 && c > 0) {
+        let player = capitalize(prompt("Choose your weapon:"));
+        let computer = computerSelection();
+        gameRules(player, computer);
 
-        if (result === 'You Win!') {
-            p++;
+        if (result === win) {
+            c--;
+        } else if (result === lose) {
+            p--;
         } else {
-            c++;
+            continue;
         }
 
         console.log("Player Score:",p, "Computer Score:",c);
         continue;
+    }
+
+    if (c === 0) {
+        console.log(win);
+    } else {
+        console.log(lose);
     }
 
 }
