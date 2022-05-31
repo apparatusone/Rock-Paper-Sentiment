@@ -13,10 +13,10 @@ let capitalize = function(string) {
 }
 
 // array to store string [rock paper scissors]
-let selectionArray = ['Rock', 'Paper', 'Scissors'];
-let result = 'default'
-let win = 'You Win!'
-let lose = 'You Lose'
+const selectionArray = ['Rock', 'Paper', 'Scissors'];
+let result = 'default';
+let win = 'You Win!';
+let lose = 'You Lose';
 
 //selects at random from the rock paper scissors array
 function computerSelection() {
@@ -31,21 +31,21 @@ function gameRules(player, computer) {
         return result = 'Tie';
     } else if ((player === 'Rock' || computer === 'Rock') && (player === 'Scissors' || computer === 'Scissors')) {
         if (player === 'Rock') {
-            return result = win
+            return result = win;
         } else {
-            return result = lose
+            return result = lose;
         }
     } else if ((player === 'Scissors' || computer === 'Scissors') && (player === 'Paper' || computer === 'Paper')) {
         if (player === 'Scissors') {
-            return result = win
+            return result = win;
         } else {
-            return result = lose
+            return result = lose;
         }
     } else if ((player === 'Paper' || computer === 'Paper') && (player === 'Rock' || computer === 'Rock')) {
         if (player === 'Paper') {
-            return result = win
+            return result = win;
         } else {
-            return result = lose
+            return result = lose;
         }
     }
     
@@ -55,7 +55,8 @@ function mainGame() {
     let p = 5;
     let c = 5;
     while (p > 0 && c > 0) {
-        let player = capitalize(prompt("Choose your weapon:"));
+        //let player = capitalize(prompt("Choose your weapon:"));
+        let player = 'Rock'
         let computer = computerSelection();
         gameRules(player, computer);
 
@@ -80,3 +81,70 @@ function mainGame() {
 }
 
 mainGame()
+
+
+//gui code
+
+function quadFunction(quad, x, y) {
+    const myArray = quad.split("");
+        if (parseInt(myArray[1])+parseInt(x) === 0 || parseInt(myArray[3])+parseInt(y) === 0 ||
+                parseInt(myArray[1])+parseInt(x) > 2 || parseInt(myArray[3])+parseInt(y) > 2) {
+            return quad;
+        } else {
+            let xOut = (parseInt(myArray[1]) + parseInt(x));
+            let yOut = (parseInt(myArray[3]) + parseInt(y));
+            return `${myArray[0]}${xOut}${myArray[2]}${yOut} menu`;
+        }
+
+}
+
+let currentQuad = "x1y2 menu" //starting quadrant
+
+window.addEventListener('keydown', keyPress);
+
+//function navigation(e) {
+//    console.log(e.keyCode);
+//}
+
+function keyPress(e) {
+    switch(e.keyCode) {
+        case 37: // left
+           move(1);
+        break;
+        case 38: // up
+            move(2);
+        break;
+        case 39: // right
+           move(3);
+        break;          
+        case 40: // down
+           move(4);
+        break;          
+        default: return; // exit this handler for other keys
+    }
+    e.preventDefault();
+};
+
+function move(direction){
+    switch(direction){
+        case 1://left
+            return currentQuad = quadFunction(currentQuad, -1, 0);
+        case 2://up
+            return currentQuad = quadFunction(currentQuad, 0, 1);
+        case 3://right
+            return currentQuad = quadFunction(currentQuad, 1, 0);
+        case 4://down
+            return currentQuad = quadFunction(currentQuad, 0, -1);
+    }
+}
+
+window.addEventListener('keydown', highlight);
+
+function highlight() {
+    let menu = document.querySelectorAll(".menu");
+    menu.forEach(element => element.classList.remove('arrow'));
+
+    let btn = document.querySelector(`[class=${CSS.escape(currentQuad)}]`);
+    btn.classList.add('arrow')
+};
+
