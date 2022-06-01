@@ -85,7 +85,7 @@ mainGame()
 
 //gui code
 
-function quadFunction(quad, x, y) {
+function quadFunction(quad, x, y) { //generates class to navigate
     const myArray = quad.split("");
         if (parseInt(myArray[1])+parseInt(x) === 0 || parseInt(myArray[3])+parseInt(y) === 0 ||
                 parseInt(myArray[1])+parseInt(x) > 2 || parseInt(myArray[3])+parseInt(y) > 2) {

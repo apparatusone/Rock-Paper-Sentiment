@@ -7,48 +7,193 @@
 *::before,
 *::after {
   box-sizing: border-box;
+
 }
 
 html {
     font-size: 62.5%;
+    font-family: "PokemonGame";
 }
-
-.fightmenu {
-    padding-top: 2.3em;
-    padding-bottom: .4em;
-    padding-right: 1em;
-    display: flex;
-    flex: 1;
-    width: 23rem;
-    height: 10rem;
-    border: solid 2px;
-}
-
-.fightmenuleft, .fightmenuright {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.fightmenuleft {
-    flex: 1.5;
-}
-
-.fightmenuright {
-    flex: 1;
-} 
-
 
 .x1y1, .x1y2, .x2y1, .x2y2 {
-    display: flex;
-    font-size: 2.1em;
+    font-size: 1.8em;
     font-family: 'PokemonGame';
 }
 
-.arrow::before {
-    content: "▶";
-    font-size: .8em;
-    padding-right: .1em;
-    margin: auto;
+/* display css */
+
+.container {  
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3.8fr 2.8fr 3.37fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "top"
+      "middle"
+      "bottom";
+    width: 24em;
+  }
+  
+.top {  
+    display: grid;
+    grid-template-columns: 5.53fr 4.47fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "topleft topright";
+    grid-area: top;
+  }
+  
+.topright { 
+    grid-area: topright; 
 }
+  
+.topleft {  
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.66fr 1.3fr 2.43fr 4.62fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "trainer"
+      "trainerlevel"
+      "trainerhealthbar"
+      "empty";
+    grid-area: topleft;
+  }
+  
+  .trainer {
+    justify-self: end; 
+    grid-area: trainer; 
+    width: 90%;  
+}
+  
+.trainerlevel { 
+    grid-area: trainerlevel; 
+}
+  
+.trainerhealthbar { 
+    grid-area: trainerhealthbar; 
+}
+  
+.empty { 
+    grid-area: empty; 
+}
+  
+.middle {  
+    display: grid;
+    grid-template-columns: 4.47fr 5.53fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "middleleft middleright";
+    grid-area: middle;
+  }
+  
+.middleleft { 
+    grid-area: middleleft; 
+}
+  
+.middleright {  
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2.39fr 1.78fr 5.83fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "playername"
+      "playerlevel"
+      "playerhealthbar";
+    grid-area: middleright;
+  }
+  
+.playername { 
+    grid-area: playername; 
+    justify-self: end; 
+    width: 90%;  
+}
+
+.playerlevel { 
+    grid-area: playerlevel; 
+}
+
+.playerhealthbar { 
+    grid-area: playerhealthbar; 
+}
+  
+.bottom {  
+    display: grid;
+    grid-template-columns: 4.06fr 5.94fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-area: bottom;
+  }
+  
+.fightmenu { 
+      grid-area: 1 / 2 / 2 / 3; 
+}
+  
+.fightsvg {  
+    display: grid;
+    grid-template-columns: 1.58fr 4.21fr .93fr 3.3fr;
+    grid-template-rows: 5fr 1.64fr 3.39fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "fightarrow fight infoarrow info"
+      "fightempty fightempty fightempty fightempty"
+      "itemarrow item runarrow run";
+    justify-self: start;
+    align-self: center;
+    grid-area: 1 / 2 / 2 / 3;
+    width: 98%;
+    height: 90%;
+  }
+  
+.fightarrow { 
+    grid-area: fightarrow; 
+}
+  
+.itemarrow { 
+    grid-area: itemarrow; 
+}
+  
+.fight {
+    align-self: start;
+    grid-area: fight;
+    height: 93%;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+.item {
+    justify-self: end;
+    grid-area: item;
+    width: 98%;
+  }
+  
+.info { 
+    grid-area: info;
+    align-self: flex-end;
+}
+  
+.run { 
+    grid-area: run; 
+}
+  
+.infoarrow { 
+    grid-area: infoarrow; 
+}
+  
+.runarrow { 
+    grid-area: runarrow; 
+}
+  
+.fightempty { 
+    grid-area: fightempty; 
+}
+  

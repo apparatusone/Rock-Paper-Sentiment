@@ -9,18 +9,39 @@
     <title>RPS Game</title>
 </head>
 <body>
-    <div class="fightmenu">
-        <div class="fightmenuleft">
-            <div class="x1y2 menu">FIGHT</div>
-            <div class="x1y1 menu">ITEM&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class="container">
+        <div class="top">
+          <div class="topright"></div>
+          <div class="topleft">
+            <div class="trainer">TRAINER</div>
+            <div class="trainerlevel"></div>
+            <div class="trainerhealthbar"></div>
+            <div class="empty"></div>
+          </div>
         </div>
-        <div class="fightmenuright">
-            <div class="x2y2 menu">PN&nbsp;&nbsp;&nbsp;</div>
-            <div class="x2y1 menu">RUN</div>
+        <div class="middle">
+          <div class="middleleft"></div>
+          <div class="middleright">
+            <div class="playername">PLAYER</div>
+            <div class="playerlevel"></div>
+            <div class="playerhealthbar"></div>
+          </div>
         </div>
-    </div>
-    <div id="container"></div>  
-    <button id="btn">Click Me</button>
+        <div class="bottom">
+          <div class="fightmenu"><img src="fightmenu.svg"></div>
+          <div class="fightsvg">
+            <div class="fightarrow"></div>
+            <div class="itemarrow"></div>
+            <div class="fight">FIGHT</div>
+            <div class="item">ITEM</div>
+            <div class="info"><sup>i</sup><sub>n</sub><sup>f</sup><sub>o</sub></div>
+            <div class="run">RUN</div>
+            <div class="infoarrow"></div>
+            <div class="runarrow"></div>
+            <div class="fightempty"></div>
+          </div>
+        </div>
+      </div>
     
 </body>
 </html>
