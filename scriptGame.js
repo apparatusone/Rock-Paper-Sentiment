@@ -7,12 +7,6 @@
 // Compare playerSelection to computerSelection
 // Display who won
 
-let capitalize = function(string) {
-    let lowerCase = string.toLowerCase();
-    return lowerCase[0].toUpperCase() + lowerCase.substring(1);
-}
-
-// array to store string [rock paper scissors]
 const selectionArray = ['Rock', 'Paper', 'Scissors'];
 let result = 'default';
 let win = 'You Win!';
@@ -24,7 +18,7 @@ function computerSelection() {
     return comp;
 } 
 
-//function to select the winner and print result
+//function to select the winner and print result to console
 function gameRules(player, computer) {
     console.log('Player:',player, 'Computer:', computer);
     if (player === computer) {
@@ -51,37 +45,30 @@ function gameRules(player, computer) {
     
 }
 
+let playScore = 5;
+let compScore = 5;
+let player = "";
+
 function mainGame() {
-    let p = 5;
-    let c = 5;
-    while (p > 0 && c > 0) {
-        //let player = capitalize(prompt("Choose your weapon:"));
-        let player = 'Rock'
-        let computer = computerSelection();
-        gameRules(player, computer);
+    let computer = computerSelection();
+    gameRules(player, computer);
 
-        if (result === win) {
-            c--;
-        } else if (result === lose) {
-            p--;
-        } else {
-            continue;
-        }
-
-        console.log("Player Score:",p, "Computer Score:",c);
-        continue;
+    if (result === win) {
+        compScore--;
+    } else if (result === lose) {
+        playScore--;
     }
 
-    if (c === 0) {
-        console.log(win);
-    } else {
-        console.log(lose);
+    console.log("Player Score:",playScore, "Computer Score:",compScore);
+    player = ""; //reset player
+
+    if (compScore === 0) {
+        console.log("GAME OVER", win);
+    } else if (playScore ===0) {
+        console.log("GAME OVER", lose);
     }
 
 }
-
-mainGame()
-
 
 //gui code
 
@@ -112,20 +99,12 @@ function keyPress(e) {
             arrow();
         break;
         case 65: // A
-            if (curSel.menu === "menu") {
-                let unhide = document.querySelectorAll(".rpsselection");
-                unhide.forEach(element => element.classList.remove('hideelement'));
-                curSel.menu = "rps";
-                curSel.x = 1;
-                curSel.y = 4;
-                console.log(curSel);
-                move(5);
-                arrow();
-                break;
-            } else if(curSel.menu === "rps") {
-                console.log(currentSelection);
-                break;
-            }
+            selectionMenu(curSel.menu);
+            //} else if(curSel.menu === "rps") {
+            //    console.log(currentSelection);
+            //    break;
+            //}
+        break;
         case 66: // B
             if (curSel.menu === "rps") {
                 let hide = document.querySelectorAll(".rpsselection");
@@ -187,6 +166,53 @@ function arrow() {
     let btn = document.querySelector(`[class=${CSS.escape(currentSelection)}]`);
     btn.classList.add('arrow')
 };
+
+function selectionMenu(menuItem) {
+    switch(menuItem) {
+        case "menu":
+            console.log(currentSelection);
+            selectionItem(currentSelection);
+        break;
+        case "rps":
+            console.log(currentSelection);
+            selectionItem(currentSelection);
+        break;
+    }
+
+}
+
+function selectionItem(item) {
+    switch(item) {
+        case "x1y2 menu":
+            let unhide = document.querySelectorAll(".rpsselection");
+            unhide.forEach(element => element.classList.remove('hideelement'));
+            curSel.menu = "rps";
+            curSel.x = 1;
+            curSel.y = 4;
+            move(5);
+            arrow();
+        break;
+        case "x1y1 menu":
+        break;
+        case "x2y2 menu":
+        break;
+        case "x2y1 menu":
+        break;
+        case "x1y4 rps":
+            player = "Rock";
+            mainGame();
+        break;
+        case "x1y3 rps":
+            player = "Paper";
+            mainGame();
+        break;
+        case "x1y2 rps":
+            player = "Scissors";
+            mainGame();
+        break;
+    }
+
+}
 
 
 
