@@ -2,28 +2,30 @@
     font-family: "PokemonGame";
     src: url("./PokemonGame.ttf");
 }
+:root {
+  font-size: 150%;
+  font-family: "PokemonGame";
+}
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-
 }
 
 html {
-    font-size: 62.5%;
-    font-family: "PokemonGame";
+
 }
 
-.x1y1, .x1y2, .x2y1, .x2y2 {
-    font-size: 1.8em;
-    font-family: 'PokemonGame';
+.arrow::before {
+    content: "▶";
 }
 
 /* display css */
 
-.container {  
+.container {
     display: grid;
+    margin: auto;
     grid-template-columns: 1fr;
     grid-template-rows: 3.8fr 2.8fr 3.37fr;
     gap: 0px 0px;
@@ -33,6 +35,7 @@ html {
       "middle"
       "bottom";
     width: 24em;
+    border: solid .5px grey;
   }
   
 .top {  
@@ -64,14 +67,16 @@ html {
     grid-area: topleft;
   }
   
-  .trainer {
+.trainer {
     justify-self: end; 
     grid-area: trainer; 
-    width: 90%;  
+    width: 94%;  
 }
   
 .trainerlevel { 
-    grid-area: trainerlevel; 
+    grid-area: trainerlevel;
+    text-align: center;
+    padding-right: 2em;
 }
   
 .trainerhealthbar { 
@@ -118,12 +123,22 @@ html {
 
 .playerlevel { 
     grid-area: playerlevel; 
+    text-align: center;
 }
 
 .playerhealthbar { 
     grid-area: playerhealthbar; 
 }
-  
+
+.mainmenu {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-area: bottom;
+}
+
 .bottom {  
     display: grid;
     grid-template-columns: 4.06fr 5.94fr;
@@ -131,13 +146,13 @@ html {
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-area: bottom;
-  }
-  
-.fightmenu { 
-      grid-area: 1 / 2 / 2 / 3; 
 }
   
-.fightsvg {  
+.fightmenu { 
+    grid-area: 1 / 2 / 2 / 3; 
+}
+  
+.fightsvg {
     display: grid;
     grid-template-columns: 1.58fr 4.21fr .93fr 3.3fr;
     grid-template-rows: 5fr 1.64fr 3.39fr;
@@ -152,14 +167,29 @@ html {
     grid-area: 1 / 2 / 2 / 3;
     width: 98%;
     height: 90%;
+    position: relative;
   }
-  
-.fightarrow { 
-    grid-area: fightarrow; 
+
+.x1y1, .x1y2, .x2y1, .x2y2 { /* item, fight, run, info*/
+    text-align: end;
+    padding-right: .2em;
 }
-  
-.itemarrow { 
-    grid-area: itemarrow; 
+.x1y1 { 
+    grid-area: itemarrow;
+}
+
+.x1y2{ 
+    grid-area: fightarrow;
+    align-self: flex-end;
+}
+
+.x2y1 { 
+    grid-area: runarrow; 
+}
+
+.x2y2 { 
+    grid-area: infoarrow;
+    align-self: flex-end;
 }
   
 .fight {
@@ -184,16 +214,38 @@ html {
 .run { 
     grid-area: run; 
 }
-  
-.infoarrow { 
-    grid-area: infoarrow; 
-}
-  
-.runarrow { 
-    grid-area: runarrow; 
-}
-  
+
 .fightempty { 
     grid-area: fightempty; 
 }
-  
+
+.rpsselection {
+    position: absolute;
+    margin-left: -9.75em;
+    margin-top: -5.25em;
+}
+
+.rpsss {
+  width: 24em;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  width: 1em;
+  height: 1em;
+}
+
+.rpsmenu {
+  list-style-type: none;
+  position: absolute;
+  margin-left: 6.5em;
+  margin-top: 5.8em;
+  display: flex;
+}
+
+.hideelement {
+  display: none;
+}

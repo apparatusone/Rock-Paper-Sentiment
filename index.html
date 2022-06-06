@@ -14,8 +14,8 @@
           <div class="topright"></div>
           <div class="topleft">
             <div class="trainer">TRAINER</div>
-            <div class="trainerlevel"></div>
-            <div class="trainerhealthbar"></div>
+            <div class="trainerlevel">:L 1</div>
+            <div class="trainerhealthbar"><img src="img/trainerhealth.svg"></div>
             <div class="empty"></div>
           </div>
         </div>
@@ -23,23 +23,40 @@
           <div class="middleleft"></div>
           <div class="middleright">
             <div class="playername">PLAYER</div>
-            <div class="playerlevel"></div>
-            <div class="playerhealthbar"></div>
+            <div class="playerlevel">:L 1</div>  <!-- add inline svg for the 'L' -->
+            <div class="playerhealthbar"><img src="img/playerhealth.svg"></div>
           </div>
         </div>
+        <div class="mainmenu"><img src="img/mainmenu.svg"></div>
         <div class="bottom">
-          <div class="fightmenu"><img src="fightmenu.svg"></div>
+          <div class="fightmenu" class="hideelement"><img src="img/fightmenu.svg"></div>
           <div class="fightsvg">
-            <div class="fightarrow"></div>
-            <div class="itemarrow"></div>
+            <div class="x1y2 menu arrow"></div> <!-- FIGHT -->
+            <div class="x2y2 menu"></div> <!-- info -->
             <div class="fight">FIGHT</div>
             <div class="item">ITEM</div>
             <div class="info"><sup>i</sup><sub>n</sub><sup>f</sup><sub>o</sub></div>
             <div class="run">RUN</div>
-            <div class="infoarrow"></div>
-            <div class="runarrow"></div>
+            <div class="x1y1 menu"></div> <!-- ITEM -->
+            <div class="x2y1 menu"></div> <!-- RUN -->
             <div class="fightempty"></div>
-          </div>
+            <div class="rpsselection hideelement">
+              <div class="rpsmenu">
+                <ul>
+                  <li class="x1y4 rps"></li>
+                  <li class="x1y3 rps"></li>
+                  <li class="x1y2 rps"></li>
+                  <li class="x1y1 rps"></li>
+                </ul>
+                <ul>
+                  <li>ROCK</li>
+                  <li>PAPER</li>
+                  <li>SCISSORS</li>
+                  <li>-</li>
+                </ul>
+              </div>
+              <img class="rpsss" src="img/rpsselection.svg">
+            </div>
         </div>
       </div>
     

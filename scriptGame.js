@@ -85,66 +85,109 @@ mainGame()
 
 //gui code
 
-function quadFunction(quad, x, y) { //generates class to navigate
-    const myArray = quad.split("");
-        if (parseInt(myArray[1])+parseInt(x) === 0 || parseInt(myArray[3])+parseInt(y) === 0 ||
-                parseInt(myArray[1])+parseInt(x) > 2 || parseInt(myArray[3])+parseInt(y) > 2) {
-            return quad;
-        } else {
-            let xOut = (parseInt(myArray[1]) + parseInt(x));
-            let yOut = (parseInt(myArray[3]) + parseInt(y));
-            return `${myArray[0]}${xOut}${myArray[2]}${yOut} menu`;
-        }
-
-}
-
-let currentQuad = "x1y2 menu" //starting quadrant
+const curSel = new Object(); //object for selected menu item
+curSel.x = 1;
+curSel.y = 2;
+curSel.menu = "menu"; //temp change to menu
+currentSelection = "x1y2 menu"
 
 window.addEventListener('keydown', keyPress);
-
-//function navigation(e) {
-//    console.log(e.keyCode);
-//}
 
 function keyPress(e) {
     switch(e.keyCode) {
         case 37: // left
            move(1);
+           arrow();
         break;
         case 38: // up
             move(2);
+            arrow();
         break;
         case 39: // right
-           move(3);
+            move(3);
+            arrow();
         break;          
         case 40: // down
-           move(4);
-        break;          
+            move(4);
+            arrow();
+        break;
+        case 65: // A
+            if (curSel.menu === "menu") {
+                let unhide = document.querySelectorAll(".rpsselection");
+                unhide.forEach(element => element.classList.remove('hideelement'));
+                curSel.menu = "rps";
+                curSel.x = 1;
+                curSel.y = 4;
+                console.log(curSel);
+                move(5);
+                arrow();
+                break;
+            } else if(curSel.menu === "rps") {
+                console.log(currentSelection);
+                break;
+            }
+        case 66: // B
+            if (curSel.menu === "rps") {
+                let hide = document.querySelectorAll(".rpsselection");
+                hide.forEach(element => element.classList.add('hideelement'));
+                curSel.menu = "menu";
+                curSel.x = 1;
+                curSel.y = 2;
+                move(6);
+                arrow();
+            }
+        break;  
         default: return; // exit this handler for other keys
     }
     e.preventDefault();
 };
 
+function navFunc(curSel, x, y) { //generates class to navigate
+    let menu = document.querySelectorAll(`.${curSel.menu}`);   //get items in current menu to find max array dimensions
+    xMenuDims = []
+    yMenuDims = []
+    menu.forEach(ele => xMenuDims.push(ele.className.slice(1,2)));
+    menu.forEach(ele => yMenuDims.push(ele.className.slice(3,4)));
+    xMax = xMenuDims.reduce(function(a, b) {
+                return Math.max(a, b);
+                }, -Infinity);
+    yMax = yMenuDims.reduce(function(a, b) {
+        return Math.max(a, b);
+        }, -Infinity);
+    if (curSel.x + x === 0 || curSel.y + y === 0 || curSel.x + x > xMax || curSel.y + y > yMax) {
+        return `x${curSel.x}y${curSel.y} ${curSel.menu}`;
+    } else {
+        curSel.x += x;
+        curSel.y += y;
+        return `x${curSel.x}y${curSel.y} ${curSel.menu}`;
+    };
+}
+
 function move(direction){
     switch(direction){
         case 1://left
-            return currentQuad = quadFunction(currentQuad, -1, 0);
+            return currentSelection = navFunc(curSel, -1, 0);
         case 2://up
-            return currentQuad = quadFunction(currentQuad, 0, 1);
+            return currentSelection = navFunc(curSel, 0, 1);
         case 3://right
-            return currentQuad = quadFunction(currentQuad, 1, 0);
+            return currentSelection = navFunc(curSel, 1, 0);
         case 4://down
-            return currentQuad = quadFunction(currentQuad, 0, -1);
+            return currentSelection = navFunc(curSel, 0, -1);
+        case 5://a
+            return currentSelection = navFunc(curSel, 0, 0);
+        case 6://b
+            return currentSelection = navFunc(curSel, 0, 0);
     }
 }
 
-window.addEventListener('keydown', highlight);
-
-function highlight() {
-    let menu = document.querySelectorAll(".menu");
+function arrow() {
+    let menu = document.querySelectorAll(`.${curSel.menu}`);
     menu.forEach(element => element.classList.remove('arrow'));
 
-    let btn = document.querySelector(`[class=${CSS.escape(currentQuad)}]`);
+    let btn = document.querySelector(`[class=${CSS.escape(currentSelection)}]`);
     btn.classList.add('arrow')
 };
+
+
+
 
