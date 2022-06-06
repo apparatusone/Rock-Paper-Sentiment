@@ -78,13 +78,13 @@ function mainGame() {
     healthBar();
 }
 
-//gui code
+//gui
 
 const curSel = new Object(); //object for selected menu item
 curSel.x = 1;
 curSel.y = 2;
-curSel.menu = "menu"; //temp change to menu
-currentSelection = "x1y2 menu"
+curSel.menu = "main";
+currentSelection = "x1y2 main"
 
 window.addEventListener('keydown', keyPress);
 
@@ -123,7 +123,7 @@ function keyPress(e) {
         case 66: // B
             if (curSel.menu === "rps") {
                 hideMenus()
-                curSel.menu = "menu";
+                curSel.menu = "main";
                 curSel.x = 1;
                 curSel.y = 2;
                 move(6);
@@ -183,7 +183,7 @@ function arrow() {
 
 function selectionMenu(menuItem) {
     switch(menuItem) {
-        case "menu":
+        case "main":
             selectionItem(currentSelection);
         break;
         case "rps":
@@ -202,10 +202,10 @@ function hideMenusAll() {
     let hide = document.querySelectorAll(".rpsselection");
     hide.forEach(element => element.classList.add('hideelement'));
 
-    let hide1 = document.querySelectorAll(".bottomright");
+    let hide1 = document.querySelectorAll(".fightsvg");
     hide1.forEach(element => element.classList.add('hideelement'));
 
-    let hide2 = document.querySelectorAll(".fightsvg");
+    let hide2 = document.querySelectorAll(".fightmenu");
     hide2.forEach(element => element.classList.add('hideelement'));
 }
 
@@ -213,16 +213,16 @@ function unHideMenus() {
     let unhide = document.querySelectorAll(".rpsselection");
     unhide.forEach(element => element.classList.remove('hideelement'));
 
-    let unhide1 = document.querySelectorAll(".bottomright");
+    let unhide1 = document.querySelectorAll(".fightsvg");
     unhide1.forEach(element => element.classList.remove('hideelement'));
 
-    let unhide2 = document.querySelectorAll(".fightsvg");
+    let unhide2 = document.querySelectorAll(".fightmenu");
     unhide2.forEach(element => element.classList.remove('hideelement'));
 }
 
 function selectionItem(item) {
     switch(item) {
-        case "x1y2 menu":
+        case "x1y2 main":
             unHideMenus()
             curSel.menu = "rps";
             curSel.x = 1;
@@ -230,11 +230,11 @@ function selectionItem(item) {
             move(5);
             arrow();
         break;
-        case "x1y1 menu":
+        case "x1y1 main":
         break;
-        case "x2y2 menu":
+        case "x2y2 main":
         break;
-        case "x2y1 menu":
+        case "x2y1 main":
         break;
         case "x1y4 rps":
             player = "ROCK";

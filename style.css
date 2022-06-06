@@ -20,6 +20,7 @@
 
 .container {  
     display: grid;
+    margin: auto;
     grid-template-columns: 1fr;
     grid-template-rows: 3.8fr 2.8fr 3.37fr;
     gap: 0px 0px;
@@ -28,7 +29,6 @@
       "top"
       "middle"
       "bottom";
-    width: 100%;
     width: 24em;
     border: solid .5px grey;
   }
@@ -48,14 +48,22 @@
     padding-left: 1em;
 }
 
-#trainerlife {
+#trainerlife, #playerlife {
     position: absolute;
-    margin-left: 4.8em;
-    margin-top: .4em;
     width: 7.3em;
     height: .5em;
     background-color: red;
+    -webkit-transition:300ms linear;
+	-moz-transition:300ms linear;
+	-o-transition:300ms linear;
+	-ms-transition:300ms linear;
+	transition:300ms linear;
     z-index: -1;
+}
+
+#trainerlife {
+    margin-left: 4.8em;
+    margin-top: .4em;
 }
 
 #trainerlevel, #playerlevel {
@@ -76,13 +84,9 @@
 }
 
 #playerlife {
-    position: absolute;
     margin-left: 3.6em;
     margin-top: 2.7em;
-    width: 7.3em;
-    height: .5em;
-    background-color: red;
-    z-index: -1;
+
 }
   
 .topright { 
@@ -154,8 +158,8 @@
 
 .rpsselection {
     position: absolute;
-    margin-left: -.1em;
-    margin-top: -4.92em;
+    margin-left: 0em;
+    margin-top: -4.89em;
 }
 
 .rpssvg {
