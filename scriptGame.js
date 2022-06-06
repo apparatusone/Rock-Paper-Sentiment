@@ -7,7 +7,9 @@
 // Compare playerSelection to computerSelection
 // Display who won
 
-const selectionArray = ['Rock', 'Paper', 'Scissors'];
+let textDiv = document.querySelector(".text");
+
+const selectionArray = ['ROCK', 'PAPER', 'SCISSORS'];
 let result = 'default';
 let win = 'You Win!';
 let lose = 'You Lose';
@@ -23,20 +25,20 @@ function gameRules(player, computer) {
     console.log('Player:',player, 'Computer:', computer);
     if (player === computer) {
         return result = 'Tie';
-    } else if ((player === 'Rock' || computer === 'Rock') && (player === 'Scissors' || computer === 'Scissors')) {
-        if (player === 'Rock') {
+    } else if ((player === 'ROCK' || computer === 'ROCK') && (player === 'SCISSORS' || computer === 'SCISSORS')) {
+        if (player === 'ROCK') {
             return result = win;
         } else {
             return result = lose;
         }
-    } else if ((player === 'Scissors' || computer === 'Scissors') && (player === 'Paper' || computer === 'Paper')) {
-        if (player === 'Scissors') {
+    } else if ((player === 'SCISSORS' || computer === 'SCISSORS') && (player === 'PAPER' || computer === 'PAPER')) {
+        if (player === 'SCISSORS') {
             return result = win;
         } else {
             return result = lose;
         }
-    } else if ((player === 'Paper' || computer === 'Paper') && (player === 'Rock' || computer === 'Rock')) {
-        if (player === 'Paper') {
+    } else if ((player === 'PAPER' || computer === 'PAPER') && (player === 'ROCK' || computer === 'ROCK')) {
+        if (player === 'PAPER') {
             return result = win;
         } else {
             return result = lose;
@@ -47,20 +49,25 @@ function gameRules(player, computer) {
 
 let playScore = 5;
 let compScore = 5;
-let player = "";
+let player = '';
+let resultGame = '';
+let computer = '';
 
 function mainGame() {
-    let computer = computerSelection();
+    computer = computerSelection();
     gameRules(player, computer);
 
     if (result === win) {
+        resultGame = "win"
         compScore--;
     } else if (result === lose) {
+        resultGame = "lose"
         playScore--;
+    } else {
+        resultGame = "tie"
     }
 
     console.log("Player Score:",playScore, "Computer Score:",compScore);
-    player = ""; //reset player
 
     if (compScore === 0) {
         console.log("GAME OVER", win);
@@ -80,7 +87,16 @@ currentSelection = "x1y2 menu"
 
 window.addEventListener('keydown', keyPress);
 
+locked = false //lock keyboard during a setTimeout, default is unlocked
+function lockKeyboard (time) {
+    locked = true;
+    setTimeout(() => locked = false, time);
+}
+
 function keyPress(e) {
+    if( locked ){
+        return; 
+     }
     switch(e.keyCode) {
         case 37: // left
            move(1);
@@ -99,16 +115,12 @@ function keyPress(e) {
             arrow();
         break;
         case 65: // A
+            console.log(locked)
             selectionMenu(curSel.menu);
-            //} else if(curSel.menu === "rps") {
-            //    console.log(currentSelection);
-            //    break;
-            //}
         break;
         case 66: // B
             if (curSel.menu === "rps") {
-                let hide = document.querySelectorAll(".rpsselection");
-                hide.forEach(element => element.classList.add('hideelement'));
+                hideMenus()
                 curSel.menu = "menu";
                 curSel.x = 1;
                 curSel.y = 2;
@@ -116,7 +128,7 @@ function keyPress(e) {
                 arrow();
             }
         break;  
-        default: return; // exit this handler for other keys
+        //default: return; // exit this handler for other keys
     }
     e.preventDefault();
 };
@@ -170,22 +182,46 @@ function arrow() {
 function selectionMenu(menuItem) {
     switch(menuItem) {
         case "menu":
-            console.log(currentSelection);
             selectionItem(currentSelection);
         break;
         case "rps":
-            console.log(currentSelection);
             selectionItem(currentSelection);
         break;
     }
 
 }
 
+function hideMenus() {
+    let hide = document.querySelectorAll(".rpsselection");
+    hide.forEach(element => element.classList.add('hideelement'));
+}
+
+function hideMenusAll() {
+    let hide = document.querySelectorAll(".rpsselection");
+    hide.forEach(element => element.classList.add('hideelement'));
+
+    let hide1 = document.querySelectorAll(".fightmenu");
+    hide1.forEach(element => element.classList.add('hideelement'));
+
+    let hide2 = document.querySelectorAll(".fightsvg");
+    hide2.forEach(element => element.classList.add('hideelement'));
+}
+
+function unHideMenus() {
+    let unhide = document.querySelectorAll(".rpsselection");
+    unhide.forEach(element => element.classList.remove('hideelement'));
+
+    let unhide1 = document.querySelectorAll(".fightmenu");
+    unhide1.forEach(element => element.classList.remove('hideelement'));
+
+    let unhide2 = document.querySelectorAll(".fightsvg");
+    unhide2.forEach(element => element.classList.remove('hideelement'));
+}
+
 function selectionItem(item) {
     switch(item) {
         case "x1y2 menu":
-            let unhide = document.querySelectorAll(".rpsselection");
-            unhide.forEach(element => element.classList.remove('hideelement'));
+            unHideMenus()
             curSel.menu = "rps";
             curSel.x = 1;
             curSel.y = 4;
@@ -199,20 +235,60 @@ function selectionItem(item) {
         case "x2y1 menu":
         break;
         case "x1y4 rps":
-            player = "Rock";
-            mainGame();
+            player = "ROCK";
+            mainGame(); // delay testing
+            setTimeout(hideMenusAll, 100);
+            gameText(resultGame, player, computer)
+            player = ""; //reset player
+            lockKeyboard(3000);
+            setTimeout(unHideMenus, 3000);
+            setTimeout(hideText, 3000);
         break;
         case "x1y3 rps":
-            player = "Paper";
-            mainGame();
+            player = "PAPER";
+            mainGame(); // delay testing
+            setTimeout(hideMenusAll, 100);
+            gameText(resultGame, player, computer)
+            player = ""; //reset player
+            lockKeyboard(3000);
+            setTimeout(unHideMenus, 3000);
+            setTimeout(hideText, 3000);
         break;
         case "x1y2 rps":
-            player = "Scissors";
-            mainGame();
+            player = "SCISSORS";
+            mainGame(); // delay testing
+            setTimeout(hideMenusAll, 100);
+            gameText(resultGame, player, computer)
+            player = ""; //reset player
+            lockKeyboard(3000);
+            setTimeout(unHideMenus, 3000);
+            setTimeout(hideText, 3000);
         break;
     }
 
 }
+
+function hideText() {
+    textDiv.textContent = null;
+}
+
+function gameText(result, player, computer) {
+    console.log(result, player, computer);
+    switch(result) {
+        case "win":
+            textDiv.textContent = `TRAINER used ${computer}`
+        break;
+        case "lose":
+            textDiv.textContent = `TRAINER used ${computer}`
+        break;
+        case "tie":
+            textDiv.textContent = `TRAINER used ${computer} TIE`
+        break;
+    }
+}
+
+
+
 
 
 

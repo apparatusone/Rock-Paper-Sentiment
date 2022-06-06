@@ -249,3 +249,8 @@ li {
 .hideelement {
   display: none;
 }
+
+.text {
+  padding-left: 2em;
+  padding-top: 2em;
+}
