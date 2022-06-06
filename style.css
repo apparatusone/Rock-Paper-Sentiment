@@ -2,6 +2,7 @@
     font-family: "PokemonGame";
     src: url("./PokemonGame.ttf");
 }
+
 :root {
   font-size: 150%;
   font-family: "PokemonGame";
@@ -13,19 +14,12 @@
   box-sizing: border-box;
 }
 
-html {
-
-}
-
 .arrow::before {
     content: "▶";
 }
 
-/* display css */
-
-.container {
+.container {  
     display: grid;
-    margin: auto;
     grid-template-columns: 1fr;
     grid-template-rows: 3.8fr 2.8fr 3.37fr;
     gap: 0px 0px;
@@ -34,6 +28,7 @@ html {
       "top"
       "middle"
       "bottom";
+    width: 100%;
     width: 24em;
     border: solid .5px grey;
   }
@@ -45,48 +40,59 @@ html {
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-      "topleft topright";
+        "topleft topright";
     grid-area: top;
-  }
+}
+
+#trainer {
+    padding-left: 1em;
+}
+
+#trainerlife {
+    position: absolute;
+    margin-left: 4.8em;
+    margin-top: .4em;
+    width: 7.3em;
+    height: .5em;
+    background-color: red;
+    z-index: -1;
+}
+
+#trainerlevel, #playerlevel {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: -.2em;
+    font-size: 1.2em;
+    gap: .2em;
+}
+
+#trainerlevel {
+    padding-right: 1em;
+}
+
+#playerlevel {
+    padding-left: 1em;
+}
+
+#playerlife {
+    position: absolute;
+    margin-left: 3.6em;
+    margin-top: 2.7em;
+    width: 7.3em;
+    height: .5em;
+    background-color: red;
+    z-index: -1;
+}
   
 .topright { 
     grid-area: topright; 
 }
-  
-.topleft {  
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1.66fr 1.3fr 2.43fr 4.62fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "trainer"
-      "trainerlevel"
-      "trainerhealthbar"
-      "empty";
-    grid-area: topleft;
-  }
-  
-.trainer {
-    justify-self: end; 
-    grid-area: trainer; 
-    width: 94%;  
+
+.topleft { 
+    grid-area: topleft; 
 }
-  
-.trainerlevel { 
-    grid-area: trainerlevel;
-    text-align: center;
-    padding-right: 2em;
-}
-  
-.trainerhealthbar { 
-    grid-area: trainerhealthbar; 
-}
-  
-.empty { 
-    grid-area: empty; 
-}
-  
+
 .middle {  
     display: grid;
     grid-template-columns: 4.47fr 5.53fr;
@@ -94,49 +100,31 @@ html {
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-      "middleleft middleright";
+        "middleleft middleright";
     grid-area: middle;
-  }
+}
+
+#playername {
+    padding-left: 1em;
+}
+
+#playerlevel {
+    padding-left: 1em;
+}
   
 .middleleft { 
     grid-area: middleleft; 
 }
-  
+
 .middleright {  
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 2.39fr 1.78fr 5.83fr;
+    grid-template-rows: 2.39fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-      "playername"
-      "playerlevel"
-      "playerhealthbar";
+        ".";
     grid-area: middleright;
-  }
-  
-.playername { 
-    grid-area: playername; 
-    justify-self: end; 
-    width: 90%;  
-}
-
-.playerlevel { 
-    grid-area: playerlevel; 
-    text-align: center;
-}
-
-.playerhealthbar { 
-    grid-area: playerhealthbar; 
-}
-
-.mainmenu {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-area: bottom;
 }
 
 .bottom {  
@@ -145,112 +133,77 @@ html {
     grid-template-rows: 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
+    justify-content: space-between;
+    align-content: space-around;
+    grid-template-areas:
+        ". bottomright";
+    grid-area: bottom;
+    position: relative;
+}
+
+.mainmenu {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     grid-area: bottom;
 }
-  
-.fightmenu { 
-    grid-area: 1 / 2 / 2 / 3; 
-}
-  
-.fightsvg {
-    display: grid;
-    grid-template-columns: 1.58fr 4.21fr .93fr 3.3fr;
-    grid-template-rows: 5fr 1.64fr 3.39fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "fightarrow fight infoarrow info"
-      "fightempty fightempty fightempty fightempty"
-      "itemarrow item runarrow run";
-    justify-self: start;
-    align-self: center;
-    grid-area: 1 / 2 / 2 / 3;
-    width: 98%;
-    height: 90%;
-    position: relative;
-  }
 
-.x1y1, .x1y2, .x2y1, .x2y2 { /* item, fight, run, info*/
-    text-align: end;
-    padding-right: .2em;
-}
-.x1y1 { 
-    grid-area: itemarrow;
-}
-
-.x1y2{ 
-    grid-area: fightarrow;
-    align-self: flex-end;
-}
-
-.x2y1 { 
-    grid-area: runarrow; 
-}
-
-.x2y2 { 
-    grid-area: infoarrow;
-    align-self: flex-end;
-}
-  
-.fight {
-    align-self: start;
-    grid-area: fight;
-    height: 93%;
-    display: flex;
-    align-items: flex-end;
-  }
-  
-.item {
-    justify-self: end;
-    grid-area: item;
-    width: 98%;
-  }
-  
-.info { 
-    grid-area: info;
-    align-self: flex-end;
-}
-  
-.run { 
-    grid-area: run; 
-}
-
-.fightempty { 
-    grid-area: fightempty; 
+.bottomright { 
+    grid-area: bottomright; 
 }
 
 .rpsselection {
     position: absolute;
-    margin-left: -9.75em;
-    margin-top: -5.25em;
+    margin-left: -.1em;
+    margin-top: -4.92em;
 }
 
-.rpsss {
-  width: 24em;
+.rpssvg {
+    width: 24em;
 }
 
 ul {
-  list-style-type: none;
+    list-style-type: none;
 }
-
+  
 li {
-  width: 1em;
-  height: 1em;
+    width: 1em;
+    height: 1em;
 }
 
 .rpsmenu {
-  list-style-type: none;
-  position: absolute;
-  margin-left: 6.5em;
-  margin-top: 5.8em;
-  display: flex;
+    list-style-type: none;
+    position: absolute;
+    margin-left: 4em;
+    margin-top: 5em;
+    display: flex;
+    gap: 0em;
+}
+
+.fightmenu {
+    position: absolute;
+    display: flex;
+    list-style-type: none;
+    margin-left: 9em;
+    margin-top: 1.4em;
+    gap: 4em;
+}
+
+.fightul {
+    display: flex;
+    font-size: 1.1em;
 }
 
 .hideelement {
-  display: none;
+    display: none;
+}
+
+.level {
+    width: .75em;
 }
 
 .text {
-  padding-left: 2em;
-  padding-top: 2em;
+    position: absolute;
+    margin-top: 17em;
+    margin-left: 2em;
 }

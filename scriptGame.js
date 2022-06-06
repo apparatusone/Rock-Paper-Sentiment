@@ -75,6 +75,7 @@ function mainGame() {
         console.log("GAME OVER", lose);
     }
 
+    healthBar();
 }
 
 //gui code
@@ -95,6 +96,7 @@ function lockKeyboard (time) {
 
 function keyPress(e) {
     if( locked ){
+        e.preventDefault();
         return; 
      }
     switch(e.keyCode) {
@@ -200,7 +202,7 @@ function hideMenusAll() {
     let hide = document.querySelectorAll(".rpsselection");
     hide.forEach(element => element.classList.add('hideelement'));
 
-    let hide1 = document.querySelectorAll(".fightmenu");
+    let hide1 = document.querySelectorAll(".bottomright");
     hide1.forEach(element => element.classList.add('hideelement'));
 
     let hide2 = document.querySelectorAll(".fightsvg");
@@ -211,7 +213,7 @@ function unHideMenus() {
     let unhide = document.querySelectorAll(".rpsselection");
     unhide.forEach(element => element.classList.remove('hideelement'));
 
-    let unhide1 = document.querySelectorAll(".fightmenu");
+    let unhide1 = document.querySelectorAll(".bottomright");
     unhide1.forEach(element => element.classList.remove('hideelement'));
 
     let unhide2 = document.querySelectorAll(".fightsvg");
@@ -285,6 +287,15 @@ function gameText(result, player, computer) {
             textDiv.textContent = `TRAINER used ${computer} TIE`
         break;
     }
+}
+
+function healthBar() {
+    trainerHealth = document.querySelector("#trainerlife");
+    playerHealth = document.querySelector("#playerlife");
+    trainerBar = 7.3*(compScore/5);
+    playerBar = 7.3*(playScore/5);
+    trainerHealth.style.width = `${trainerBar}em`;
+    playerHealth.style.width = `${playerBar}em`;
 }
 
 
