@@ -117,7 +117,6 @@ function keyPress(e) {
             arrow();
         break;
         case 65: // A
-            console.log(locked)
             selectionMenu(curSel.menu);
         break;
         case 66: // B
@@ -274,17 +273,33 @@ function hideText() {
     textDiv.textContent = null;
 }
 
+function typeText(text) {
+    let i = 0;
+    function myLoop() {         //  create a loop function
+      setTimeout(function() {
+        let char = document.createTextNode(text[i]);
+        textDiv.appendChild(char);
+        i++;
+        if (i < text.length) {           //  if the counter < string length, call the loop function
+          myLoop();             //  ..  again which will trigger another 
+        }                       //  ..  setTimeout()
+      }, 50)
+    }
+    
+    myLoop();
+}
+
 function gameText(result, player, computer) {
-    console.log(result, player, computer);
+    console.log(result);
     switch(result) {
         case "win":
-            textDiv.textContent = `TRAINER used ${computer}`
+            typeText(`TRAINER used ${computer}`);
         break;
         case "lose":
-            textDiv.textContent = `TRAINER used ${computer}`
+            typeText(`TRAINER used ${computer}`);
         break;
         case "tie":
-            textDiv.textContent = `TRAINER used ${computer} TIE`
+            typeText(`TRAINER used ${computer} TIE`);
         break;
     }
 }
