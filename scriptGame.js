@@ -117,6 +117,8 @@ function keyPress(e) {
             arrow();
         break;
         case 65: // A
+            move(5);
+            arrow();
             selectionMenu(curSel.menu);
         break;
         case 66: // B
@@ -136,8 +138,7 @@ function keyPress(e) {
 
 function navFunc(curSel, x, y) { //generates class to navigate
     let menu = document.querySelectorAll(`.${curSel.menu}`);   //get items in current menu to find max array dimensions
-    xMenuDims = []
-    yMenuDims = []
+    let xMenuDims = [], yMenuDims = []
     menu.forEach(ele => xMenuDims.push(ele.className.slice(1,2)));
     menu.forEach(ele => yMenuDims.push(ele.className.slice(3,4)));
     xMax = xMenuDims.reduce(function(a, b) {
@@ -147,11 +148,11 @@ function navFunc(curSel, x, y) { //generates class to navigate
         return Math.max(a, b);
         }, -Infinity);
     if (curSel.x + x === 0 || curSel.y + y === 0 || curSel.x + x > xMax || curSel.y + y > yMax) {
-        return `x${curSel.x}y${curSel.y} ${curSel.menu}`;
+        return `x${curSel.x}y${curSel.y} ${curSel.menu} hideelement`;
     } else {
         curSel.x += x;
         curSel.y += y;
-        return `x${curSel.x}y${curSel.y} ${curSel.menu}`;
+        return `x${curSel.x}y${curSel.y} ${curSel.menu} hideelement`;
     };
 }
 
@@ -166,6 +167,7 @@ function move(direction){
         case 4://down
             return currentSelection = navFunc(curSel, 0, -1);
         case 5://a
+            console.log(currentSelection);
             return currentSelection = navFunc(curSel, 0, 0);
         case 6://b
             return currentSelection = navFunc(curSel, 0, 0);
@@ -174,11 +176,30 @@ function move(direction){
 
 function arrow() {
     let menu = document.querySelectorAll(`.${curSel.menu}`);
-    menu.forEach(element => element.classList.remove('arrow'));
+    menu.forEach(element => element.classList.add('hideelement'));
 
     let btn = document.querySelector(`[class=${CSS.escape(currentSelection)}]`);
-    btn.classList.add('arrow')
+    btn.classList.remove('hideelement')
+    currentSelection = `x${curSel.x}y${curSel.y} ${curSel.menu}`;
 };
+
+function hideMenus() {
+    let hide = document.querySelectorAll(".rpsselection");
+    hide.forEach(element => element.classList.add('hideelement'));
+}
+
+function hideMenusAll() {
+    let hide = document.querySelectorAll(".rpscon, #fightmenu, #fs, #rps");
+    hide.forEach(element => element.classList.add('hideelement'));
+}
+
+function unHideMenus() {
+    let unhiderps1 = document.querySelectorAll(".rpscon, #rps");
+    unhiderps1.forEach(element => element.classList.remove('hideelement'));
+
+    let unhide2 = document.querySelectorAll(".fightmenu");
+    unhide2.forEach(element => element.classList.remove('hideelement'));
+}
 
 function selectionMenu(menuItem) {
     switch(menuItem) {
@@ -192,37 +213,11 @@ function selectionMenu(menuItem) {
 
 }
 
-function hideMenus() {
-    let hide = document.querySelectorAll(".rpsselection");
-    hide.forEach(element => element.classList.add('hideelement'));
-}
-
-function hideMenusAll() {
-    let hide = document.querySelectorAll(".rpsselection");
-    hide.forEach(element => element.classList.add('hideelement'));
-
-    let hide1 = document.querySelectorAll(".fightsvg");
-    hide1.forEach(element => element.classList.add('hideelement'));
-
-    let hide2 = document.querySelectorAll(".fightmenu");
-    hide2.forEach(element => element.classList.add('hideelement'));
-}
-
-function unHideMenus() {
-    let unhide = document.querySelectorAll(".rpsselection");
-    unhide.forEach(element => element.classList.remove('hideelement'));
-
-    let unhide1 = document.querySelectorAll(".fightsvg");
-    unhide1.forEach(element => element.classList.remove('hideelement'));
-
-    let unhide2 = document.querySelectorAll(".fightmenu");
-    unhide2.forEach(element => element.classList.remove('hideelement'));
-}
-
 function selectionItem(item) {
     switch(item) {
         case "x1y2 main":
-            unHideMenus()
+            hideMenusAll();
+            unHideMenus();
             curSel.menu = "rps";
             curSel.x = 1;
             curSel.y = 4;
@@ -270,7 +265,7 @@ function selectionItem(item) {
 }
 
 function hideText() {
-    textDiv.textContent = null;
+    textDiv.textContent = "";
 }
 
 function typeText(text) {
@@ -285,7 +280,6 @@ function typeText(text) {
         }                       //  ..  setTimeout()
       }, 50)
     }
-    
     myLoop();
 }
 
@@ -307,8 +301,8 @@ function gameText(result, player, computer) {
 function healthBar() {
     trainerHealth = document.querySelector("#trainerlife");
     playerHealth = document.querySelector("#playerlife");
-    trainerBar = 7.3*(compScore/5);
-    playerBar = 7.3*(playScore/5);
+    trainerBar = 7.2*(compScore/5);
+    playerBar = 7.2*(playScore/5);
     trainerHealth.style.width = `${trainerBar}em`;
     playerHealth.style.width = `${playerBar}em`;
 }

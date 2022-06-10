@@ -10,69 +10,48 @@
 </head>
 <body>
     <div class="container">
-        <div class="top">
-          <div class="topright"></div>
-          <div class="topleft">
-            <div id="trainer">TRAINER</div>
-            <div id="trainerlevel"><img class="level" src="img/level.svg"> 1</div>
-            <div id="trainerlife"></div>
-            <img src="img/trainerhealth.svg">
-          </div>
-        </div>
-        <div class="middle">
-          <div class="middleleft"></div>
-          <div class="middleright">
-            <div id="playername">PLAYER</div>
-            <div id="playerlevel"><img class="level" src="img/level.svg"> 1</div>
-            <div id="playerlife"></div>
-            <img src="img/playerhealth.svg">
-          </div>
-        </div>
-        <div class="mainmenu"><img src="img/mainmenu.svg"></div>
-        <div class="text"></div>
-        <div class="bottom">
-            <div class="bottomright"><img class="fightsvg" src="img/fightmenu.svg"></div>
-            <div class="fightmenu">
-                <div class="fightmenuleft">
-                    <ul class="fightul">
-                        <li class="x1y2 main arrow"></li>
-                        <li>FIGHT</li>
-                    </ul>
-                    <ul class="fightul">
-                        <li class="x1y1 main"></li>
-                        <li>ITEM</li>
-                    </ul>
-                </div>
-                <div class="fightmenuright">
-                    <ul class="fightul">
-                        <li class="x2y2 main"></li>
-                        <li><sup>i</sup><sub>n</sub><sup>f</sup><sub>o</sub></li>
-                    </ul>
-                    <ul class="fightul">
-                        <li class="x2y1 main"></li>
-                        <li>RUN</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="rpsselection hideelement">
-                <div class="rpsmenu">
-                  <ul>
-                    <li class="x1y4 rps"></li>
-                    <li class="x1y3 rps"></li>
-                    <li class="x1y2 rps"></li>
-                    <li class="x1y1 rps"></li>
-                  </ul>
-                  <ul>
-                    <li>ROCK</li>
-                    <li>PAPER</li>
-                    <li>SCISSORS</li>
-                    <li>-</li>
-                  </ul>
-                </div>
-                <img class="rpssvg" src="img/rpsselection.svg">
-          </div>
-        </div>
+      <div id="graphicscon">
+        <img id="main" src="img/main-menu-v3.svg">
+        <img id="fs" class="" src="img/fight-selection-screen-v3.svg">
+        <img id="tb" src="img/trainer-level-bar.svg">
+        <img id="pb" src="img/player-level-bar.svg">
+        <img id="rps" class="hideelement" src="img/rps-menu-v3.svg">
+        <img id="template" src="img/grid template.svg">
       </div>
-    
+      <div id="livecon">
+        <div id="trainer">TRAINER</div>
+        <div id="trainerlevel"><img class="level"> 1</div>
+        <div id="trainerlife"></div>
+        <div id="playername">PLAYER</div>
+        <div id="playerlevel"><img class="level"> 1</div>
+        <div id="playerlife"></div>
+      </div>
+      <div id="fightmenu" class="">
+          <img class="x1y2 main" src="img/arrow.svg">
+          <div id="fight">FIGHT</div>
+          <img class="x1y1 main hideelement" src="img/arrow.svg">
+          <div id="item">ITEM</div>
+          <img class="x2y2 main hideelement" src="img/arrow.svg">
+          <div id="info"><sup>i</sup><sub>n</sub><sup>f</sup><sub>o</sub></div>
+          <img class="x2y1 main hideelement" src="img/arrow.svg">
+          <div id="run">RUN</div>
+        </div>
+        <div class="textcon">
+          <div class="text"></div>
+        </div>
+        <div class="rpscon hideelement">
+          <div id="rpsdiv">
+            <div class="rpsmenu">ROCK</div>
+            <div class="rpsmenu">PAPER</div>
+            <div class="rpsmenu">SCISSORS</div>
+            <div class="rpsmenu">-</div>
+          </div>
+
+          <img class="x1y4 rps hideelement" src="img/arrow.svg">
+          <img class="x1y3 rps hideelement" src="img/arrow.svg">
+          <img class="x1y2 rps hideelement" src="img/arrow.svg">
+          <img class="x1y1 rps hideelement" src="img/arrow.svg">
+        </div>
+    </div>
 </body>
 </html>

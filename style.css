@@ -4,8 +4,9 @@
 }
 
 :root {
-  font-size: 150%;
+  font-size: 40px; /* 1px = .125 */
   font-family: "PokemonGame";
+  background-color: rgb(84, 84, 84);
 }
 
 *,
@@ -14,200 +15,227 @@
   box-sizing: border-box;
 }
 
-.arrow::before {
-    content: "▶";
-}
+/* graphics rewrite */
 
-.container {  
-    display: grid;
-    margin: auto;
-    grid-template-columns: 1fr;
-    grid-template-rows: 3.8fr 2.8fr 3.37fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "top"
-      "middle"
-      "bottom";
+.container {
     width: 24em;
-    border: solid .5px grey;
-  }
-  
-.top {  
-    display: grid;
-    grid-template-columns: 5.53fr 4.47fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        "topleft topright";
-    grid-area: top;
-}
-
-#trainer {
-    padding-left: 1em;
-}
-
-#trainerlife, #playerlife {
-    position: absolute;
-    width: 7.3em;
-    height: .5em;
-    background-color: red;
-    -webkit-transition:300ms linear;
-	-moz-transition:300ms linear;
-	-o-transition:300ms linear;
-	-ms-transition:300ms linear;
-	transition:300ms linear;
+    height: 21.6em;
+    margin: auto;
+    background-color: white;
+    box-shadow: /* very  smooth shadow */
+    0 2.8px 2.2px rgba(0, 0, 0, 0.114),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.164),
+    0 12.5px 10px rgba(0, 0, 0, 0.193),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.196),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.304),
+    0 100px 80px rgba(0, 0, 0, 0.316);
     z-index: -1;
 }
 
-#trainerlife {
-    margin-left: 4.8em;
-    margin-top: .4em;
-}
-
-#trainerlevel, #playerlevel {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    margin-top: -.2em;
-    font-size: 1.2em;
-    gap: .2em;
-}
-
-#trainerlevel {
-    padding-right: 1em;
-}
-
-#playerlevel {
-    padding-left: 1em;
-}
-
-#playerlife {
-    margin-left: 3.6em;
-    margin-top: 2.7em;
-
-}
-  
-.topright { 
-    grid-area: topright; 
-}
-
-.topleft { 
-    grid-area: topleft; 
-}
-
-.middle {  
-    display: grid;
-    grid-template-columns: 4.47fr 5.53fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        "middleleft middleright";
-    grid-area: middle;
-}
-
-#playername {
-    padding-left: 1em;
-}
-
-#playerlevel {
-    padding-left: 1em;
-}
-  
-.middleleft { 
-    grid-area: middleleft; 
-}
-
-.middleright {  
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2.39fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        ".";
-    grid-area: middleright;
-}
-
-.bottom {  
-    display: grid;
-    grid-template-columns: 4.06fr 5.94fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    justify-content: space-between;
-    align-content: space-around;
-    grid-template-areas:
-        ". bottomright";
-    grid-area: bottom;
+#graphicscon {
     position: relative;
 }
 
-.mainmenu {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    grid-area: bottom;
-}
-
-.bottomright { 
-    grid-area: bottomright; 
-}
-
-.rpsselection {
+#main, #fs, #tb, #pb, #rps{
     position: absolute;
-    margin-left: 0em;
-    margin-top: -4.89em;
+    top: 0;
+    left: 0;
 }
 
-.rpssvg {
-    width: 24em;
+#livecon  {
+    position: relative;
 }
 
-ul {
-    list-style-type: none;
-}
-  
-li {
-    width: 1em;
-    height: 1em;
-}
-
-.rpsmenu {
-    list-style-type: none;
+#trainer, #playername{
     position: absolute;
-    margin-left: 4em;
-    margin-top: 5em;
-    display: flex;
-    gap: 0em;
+    font-size: 1.2rem;
+    letter-spacing: -.015rem; /* aligns font to grid */
+    top: -0.13em;
 }
 
-.fightmenu {
+#trainer {
+    left: 1em;
+}
+
+#playername {
+    top: 6.86em;
+    left: 9.99em;
+}
+
+#trainerlevel, #playerlevel {
     position: absolute;
-    display: flex;
-    list-style-type: none;
-    margin-left: 9em;
-    margin-top: 1.4em;
-    gap: 4em;
+    font-size: 1.2em;
+    text-align: left;
 }
 
-.fightul {
-    display: flex;
-    font-size: 1.1em;
+#trainerlevel {
+    top: .865em;
+    left: 3.99em;
+    z-index: 1;
 }
 
-.hideelement {
-    display: none;
+#playerlevel {
+    top: 7.86em;
+    left: 13.98em;
+    z-index: 1;
 }
 
 .level {
     width: .75em;
 }
 
+#trainerlife, #playerlife {
+    position: absolute;
+    width: 7.2em;
+    height: .31em;
+    background-color: red;
+    -webkit-transition:350ms ease-in;
+	-moz-transition:350ms ease-in;
+	-o-transition:350ms ease-in;
+	-ms-transition:350ms ease-in;
+	transition:350ms ease-in;
+    z-index: 0;
+}
+
+#trainerlife {
+    top: 2.84em;
+    left: 4.8em;
+}
+
+#playerlife {
+    top: 11.24em;
+    left: 14.4em;
+}
+
+#fightmenu {
+    position: relative;
+    font-size: 1.2rem;
+    letter-spacing: -.015rem;
+}
+
+#fight {
+    position: absolute;
+    top: 13.875em;
+    left: 10em;
+}
+
+.x1y2.main{
+    position: absolute;
+    top: 13.875em;
+    left: 9.125em;   
+}
+
+#item {
+    position: absolute;
+    top: 15.875em;
+    left: 10.125em;          
+}
+
+.x1y1.main{
+    position: absolute;
+    top: 15.875em;
+    left: 9.125em;   
+}
+
+#info {
+    position: absolute;
+    top: 13.875em;
+    left: 15.75em;
+}
+
+.x2y2.main{
+    position: absolute;
+    top: 13.875em;
+    left: 14.875em;  
+}
+
+#run {
+    position: absolute;
+    top: 15.875em;
+    left: 16em;
+}
+
+.x2y1.main{
+    position: absolute;
+    top: 15.875em;
+    left: 14.875em;  
+}
+
+.rpscon {
+    position: relative;
+    font-size: 1.2em;
+    letter-spacing: -.015rem;
+}
+
+#rpsdiv {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: -.125em;
+    top: 13em;
+    left: 6em;
+}
+
+.rpsmenu {
+    margin-top: -.125em;
+}
+
+.rps, .main {
+    width: .625em;
+    margin-top: .25em;
+}
+
+.x1y4.rps {
+    position: absolute;
+    top: 12.875em;
+    left: 5.125em;   
+}
+
+.x1y3.rps {
+    position: absolute;
+    top: 13.875em;
+    left: 5.125em;   
+}
+
+.x1y2.rps {
+    position: absolute;
+    top: 14.875em;
+    left: 5.125em;   
+}
+
+.x1y1.rps {
+    position: absolute;
+    top: 15.875em;
+    left: 5.125em;   
+}
+
+.textcon {
+    position: relative;
+}
+
 .text {
     position: absolute;
-    margin-top: 17em;
-    margin-left: 2em;
+    top: 16em;
+    left: 2em;
 }
+
+#arrowselector {
+
+}
+
+.hideelement {
+    visibility: hidden;
+}
+
+#rpsarrow {
+    position: absolute;
+    left: 2em;
+}
+
+#template {
+    position: absolute;
+    opacity: 8%;
+    z-index: 5;
+}
+
