@@ -167,7 +167,6 @@ function move(direction){
         case 4://down
             return currentSelection = navFunc(curSel, 0, -1);
         case 5://a
-            console.log(currentSelection);
             return currentSelection = navFunc(curSel, 0, 0);
         case 6://b
             return currentSelection = navFunc(curSel, 0, 0);
@@ -268,32 +267,40 @@ function hideText() {
     textDiv.textContent = "";
 }
 
+let interval = 40;
+
 function typeText(text) {
     let i = 0;
-    function myLoop() {         //  create a loop function
+    function myLoop() { 
       setTimeout(function() {
         let char = document.createTextNode(text[i]);
-        textDiv.appendChild(char);
+        if (text[i] === "#") {
+            linebreak = document.createElement("br");
+            textDiv.appendChild(linebreak);
+        } else {
+            textDiv.appendChild(char);
+        };
         i++;
-        if (i < text.length) {           //  if the counter < string length, call the loop function
-          myLoop();             //  ..  again which will trigger another 
-        }                       //  ..  setTimeout()
-      }, 50)
+        if (i < text.length) {   //  if the counter < string length, call the loop function
+          myLoop();
+        }                       
+      }, interval)                    // set interval
     }
     myLoop();
+    return;
 }
 
 function gameText(result, player, computer) {
     console.log(result);
     switch(result) {
         case "win":
-            typeText(`TRAINER used ${computer}`);
+            typeText(`TRAINER## used ${computer}`);
         break;
         case "lose":
-            typeText(`TRAINER used ${computer}`);
+            typeText(`TRAINER## used ${computer}`);
         break;
         case "tie":
-            typeText(`TRAINER used ${computer} TIE`);
+            typeText(`TRAINER## used ${computer}, TIE`);
         break;
     }
 }

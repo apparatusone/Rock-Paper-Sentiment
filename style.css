@@ -15,8 +15,6 @@
   box-sizing: border-box;
 }
 
-/* graphics rewrite */
-
 .container {
     width: 24em;
     height: 21.6em;
@@ -212,11 +210,13 @@
 
 .textcon {
     position: relative;
+    font-size: 1.2em;
+    letter-spacing: -.015rem;
 }
 
 .text {
     position: absolute;
-    top: 16em;
+    top: 13em;
     left: 2em;
 }
 
