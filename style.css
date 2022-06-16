@@ -4,9 +4,9 @@
 }
 
 :root {
-  font-size: 40px; /* 1px = .125 */
+  font-size: 20px; /* 1px = .125 */
   font-family: "PokemonGame";
-  background-color: rgb(84, 84, 84);
+  background-color: rgb(58, 58, 58);
 }
 
 *,
@@ -15,11 +15,29 @@
   box-sizing: border-box;
 }
 
-.container {
+#controls {
+    position: relative;
+    width: 40.9em;
+    margin: auto;
+}
+
+.handheld {
+    position: relative;
+    width: 40.9em;
+    margin: auto;
+}
+
+.display {
+    position: relative;
+    top: 6.6em;
+    left: -.2em
+}
+
+#container {
     width: 24em;
     height: 21.6em;
     margin: auto;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     box-shadow: /* very  smooth shadow */
     0 2.8px 2.2px rgba(0, 0, 0, 0.114),
     0 6.7px 5.3px rgba(0, 0, 0, 0.164),
@@ -27,7 +45,8 @@
     0 22.3px 17.9px rgba(0, 0, 0, 0.196),
     0 41.8px 33.4px rgba(0, 0, 0, 0.304),
     0 100px 80px rgba(0, 0, 0, 0.316);
-    z-index: -1;
+    opacity: 0%;
+    z-index: 1;
 }
 
 #graphicscon {
@@ -38,6 +57,66 @@
     position: absolute;
     top: 0;
     left: 0;
+}
+
+#upButton {
+    position: absolute;
+    top: 21em;
+    left: 3.5em;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 2em;
+    z-index: 20;
+}
+
+#downButton {
+    position: absolute;
+    top: 25em;
+    left: 3.5em;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 2em;
+    z-index: 20;
+}
+
+#leftButton {
+    position: absolute;
+    top: 23em;
+    left: 1.5em;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 2em;
+    z-index: 20;
+}
+
+#rightButton {
+    position: absolute;
+    top: 23em;
+    left: 5.5em;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 2em;
+    z-index: 20;
+}
+
+#aButton {
+    position: absolute;
+    top: 22em;
+    left: 16.5em;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 2em;
+    z-index: 20;
+}
+
+#bButton {
+    position: absolute;
+    top: 23em;
+    left: 13em;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 2em;
+    z-index: 20;
 }
 
 #livecon  {
@@ -86,7 +165,7 @@
     position: absolute;
     width: 7.2em;
     height: .31em;
-    background-color: red;
+    background-color: #8B4757;
     -webkit-transition:350ms ease-in;
 	-moz-transition:350ms ease-in;
 	-o-transition:350ms ease-in;
@@ -216,7 +295,8 @@
 
 .text {
     position: absolute;
-    top: 13em;
+    line-height: 1em;
+    top: 13.955em;
     left: 2em;
 }
 
@@ -238,4 +318,88 @@
     opacity: 8%;
     z-index: 5;
 }
+
+#cat {
+    position: absolute;
+    width: 6em;
+    top: .5em;
+    left: 15em;
+}
+
+
+/* animation stuff */
+
+#svg1, #svg2, #svg3, #svg4, #incom{
+    position: absolute;
+    z-index: -2;
+}
+
+#svg2 {
+    clip-path: 0;
+}
+
+.swipereveal {
+    position: absolute;
+    animation: test 1.5s linear;
+}
+
+#layer4 {
+    backdrop-filter: blur(8px);
+    z-index: 0;
+}
+
+@keyframes test {
+        0% { clip-path: polygon(100% 0, 0 0, 0 100%, 0 0, 0 0); }
+        50% { clip-path: polygon(100% 0, 0 0, 0 100%, 0 100%, 100% 0); }
+        100% { clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, 100% 100%); }
+  }
+
+#splash1, #splash2, #splash3, #splash4, #splash5 {
+    clip-path: 0;
+    animation: splash 1s linear;
+}
+
+#splash5 {
+    opacity: 100%;
+}
+
+#splash5.fadeout {
+    -webkit-transition: .9s;
+    -moz-transition: .9s;
+    -ms-transition: .9s;
+    -o-transition: .9s;
+    transition: .9s;
+    opacity: 0%;
+}
+
+#container.fadein {
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -ms-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+    opacity: 100%;
+}
+
+@keyframes splash {
+    0% { clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+
+.cls-1 {
+    stroke-dasharray: 5300;
+    stroke-dashoffset: 5300;
+    animation: outline 1.7s cubic-bezier(0.805, 0.075, 0.150, 0.890) forwards;
+    fill:none;
+    stroke:#fff;
+    stroke-miterlimit:10;
+    stroke-width: .08em;
+}
+  
+@keyframes outline {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
 
