@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+body {
+    max-height: 100vh;
+}
+
 #controls {
     position: relative;
     width: 40.9em;
@@ -27,30 +31,28 @@
     margin: auto;
 }
 
-.display {
-    position: relative;
-    top: 6.6em;
-    left: -.2em
+#display {
+    width: 40.9em;
+    margin: auto;
 }
 
 #container {
+    position: relative;
+    margin: auto;
+    top: 6.6em;
+    left: -.2em;
     width: 24em;
     height: 21.6em;
-    margin: auto;
     background-color: rgb(255, 255, 255);
-    box-shadow: /* very  smooth shadow */
+    /* box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.114),
     0 6.7px 5.3px rgba(0, 0, 0, 0.164),
     0 12.5px 10px rgba(0, 0, 0, 0.193),
     0 22.3px 17.9px rgba(0, 0, 0, 0.196),
     0 41.8px 33.4px rgba(0, 0, 0, 0.304),
-    0 100px 80px rgba(0, 0, 0, 0.316);
+    0 100px 80px rgba(0, 0, 0, 0.316); */
     opacity: 0%;
     z-index: 1;
-}
-
-#graphicscon {
-    position: relative;
 }
 
 #main, #fs, #tb, #pb, #rps{
@@ -119,10 +121,6 @@
     z-index: 20;
 }
 
-#livecon  {
-    position: relative;
-}
-
 #trainer, #playername{
     position: absolute;
     font-size: 1.2rem;
@@ -185,7 +183,6 @@
 }
 
 #fightmenu {
-    position: relative;
     font-size: 1.2rem;
     letter-spacing: -.015rem;
 }
@@ -239,7 +236,6 @@
 }
 
 .rpscon {
-    position: relative;
     font-size: 1.2em;
     letter-spacing: -.015rem;
 }
@@ -288,7 +284,6 @@
 }
 
 .textcon {
-    position: relative;
     font-size: 1.2em;
     letter-spacing: -.015rem;
 }
@@ -343,7 +338,7 @@
     animation: test 1.5s linear;
 }
 
-#layer4 {
+#layer3 {
     backdrop-filter: blur(8px);
     z-index: 0;
 }
