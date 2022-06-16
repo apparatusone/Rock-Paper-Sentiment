@@ -4,7 +4,7 @@
 }
 
 :root {
-  font-size: 20px; /* 1px = .125 */
+  font-size: 15px; /* 1px = .125 */
   font-family: "PokemonGame";
   background-color: rgb(58, 58, 58);
 }
@@ -61,64 +61,43 @@ body {
     left: 0;
 }
 
-#upButton {
+#upButton, #downButton, #leftButton, #rightButton, #aButton, #bButton {
     position: absolute;
-    top: 21em;
-    left: 3.5em;
+    margin: auto;
     width: 1.5em;
     height: 1.5em;
     font-size: 2em;
     z-index: 20;
+}
+
+#upButton {
+    top: 21em;
+    left: 3.5em;
 }
 
 #downButton {
-    position: absolute;
     top: 25em;
     left: 3.5em;
-    width: 1.5em;
-    height: 1.5em;
-    font-size: 2em;
-    z-index: 20;
 }
 
 #leftButton {
-    position: absolute;
     top: 23em;
     left: 1.5em;
-    width: 1.5em;
-    height: 1.5em;
-    font-size: 2em;
-    z-index: 20;
 }
 
 #rightButton {
-    position: absolute;
     top: 23em;
     left: 5.5em;
-    width: 1.5em;
-    height: 1.5em;
-    font-size: 2em;
-    z-index: 20;
 }
 
 #aButton {
-    position: absolute;
     top: 22em;
     left: 16.5em;
-    width: 1.5em;
-    height: 1.5em;
-    font-size: 2em;
-    z-index: 20;
 }
 
 #bButton {
-    position: absolute;
     top: 23em;
     left: 13em;
-    width: 1.5em;
-    height: 1.5em;
-    font-size: 2em;
-    z-index: 20;
 }
 
 #trainer, #playername{

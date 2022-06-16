@@ -88,6 +88,18 @@ locked = false //lock keyboard during a setTimeout, default is unlocked
 
 // keyboard navigation of game
 
+function bBack() {
+    if (curSel.menu === "rps") {
+        hideElements("#rps, .rpscon");
+        unHideElements("#fightmenu, #fs")
+        curSel.menu = "main";
+        curSel.x = 1;
+        curSel.y = 2;
+        move(6);
+        arrow();
+    }
+}
+
 function keyPress(e) {
     if( locked ){
         e.preventDefault();
@@ -117,15 +129,7 @@ function keyPress(e) {
             console.log("test");
         break;
         case 66: // B
-            if (curSel.menu === "rps") {
-                hideElements("#rps, .rpscon");
-                unHideElements("#fightmenu, #fs")
-                curSel.menu = "main";
-                curSel.x = 1;
-                curSel.y = 2;
-                move(6);
-                arrow();
-            }
+            bBack();
         break;  
         //default: return; // exit this handler for other keys
     }
@@ -353,7 +357,7 @@ document.getElementById("aButton").onclick = function() {(
     arrow(),
     selectionMenu(curSel.menu)
 )};
-// document.getElementById("bButton").onclick = function() {()};
+document.getElementById("bButton").onclick = function() {(bBack())};
 
 // function moveUp() {
 //   document.getElementById("myDropdown").classList.toggle("show");
