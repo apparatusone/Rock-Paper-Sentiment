@@ -393,7 +393,7 @@ async function javaBoy() {
 
     async function javaboyReveal() {
         await delay(500);
-        i = 1;
+        let i = 1;
         for (const ele of colors) {
             svg = document.createElement("div");
             svg.setAttribute("id",`splash${i}`);
@@ -406,11 +406,11 @@ async function javaBoy() {
             svg.style.height = "21.6em";
             graphicsContainer.append(svg);
             console.log(i);
-            if (i === 5 ) {
-                const animated = document.querySelector('#splash5');
+            if (i === colors.length ) {
+                const animated = document.querySelector(`#splash${i}`);
                 await animationEnd(animated, 'animationend');
             }
-            i++
+            i++;
             await timer(150);
         }
     }
@@ -442,7 +442,7 @@ async function javaBoy() {
 
 function initialAnimation() {
     const animContainer = document.querySelector(".handheld");
-    const img = ["pcb", "extras", "case", "screenborder"];
+    const img = ["pcb", "extras", "case", "controls"];
 
     async function outline(done) {
         svg = document.createElement("object");
@@ -456,7 +456,7 @@ function initialAnimation() {
 
     async function layers() {
         await outline(done)
-        i = 1;
+        let i = 1;
         for (const ele of img) {
             svg = document.createElement("object");
             svg.setAttribute("id",`layer${i}`);

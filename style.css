@@ -4,7 +4,7 @@
 }
 
 :root {
-  font-size: 15px; /* 1px = .125 */
+  font-size: 1.5vmin; /* 1px = .125 */
   font-family: "PokemonGame";
   background-color: rgb(58, 58, 58);
 }
@@ -39,7 +39,7 @@ body {
 #container {
     position: relative;
     margin: auto;
-    top: 6.6em;
+    top: 6.8em;
     left: -.2em;
     width: 24em;
     height: 21.6em;
@@ -67,6 +67,7 @@ body {
     width: 1.5em;
     height: 1.5em;
     font-size: 2em;
+    opacity: 0;
     z-index: 20;
 }
 
@@ -317,8 +318,10 @@ body {
     animation: test 1.5s linear;
 }
 
+
 #layer3 {
-    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(.3em);
+    backdrop-filter: blur(.3em);
     z-index: 0;
 }
 
