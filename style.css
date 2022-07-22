@@ -4,7 +4,7 @@
 }
 
 :root {
-  font-size: 1.5vmin; /* 1px = .125 */
+  font-size: 1.3vh; /* 1px = .125 */
   font-family: "PokemonGame";
   background-color: rgb(58, 58, 58);
 }

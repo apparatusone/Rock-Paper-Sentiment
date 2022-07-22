@@ -11,31 +11,11 @@ function computerSelection() {
     return comp;
 } 
 
-//function to select the winner and print result to console
 function gameRules(player, computer) {
     console.log('Player:',player, 'Computer:', computer);
-    if (player === computer) {
-        return result = 'Tie';
-    } else if ((player === 'ROCK' || computer === 'ROCK') && (player === 'SCISSORS' || computer === 'SCISSORS')) {
-        if (player === 'ROCK') {
-            return result = win;
-        } else {
-            return result = lose;
-        }
-    } else if ((player === 'SCISSORS' || computer === 'SCISSORS') && (player === 'PAPER' || computer === 'PAPER')) {
-        if (player === 'SCISSORS') {
-            return result = win;
-        } else {
-            return result = lose;
-        }
-    } else if ((player === 'PAPER' || computer === 'PAPER') && (player === 'ROCK' || computer === 'ROCK')) {
-        if (player === 'PAPER') {
-            return result = win;
-        } else {
-            return result = lose;
-        }
-    }
-    
+	if (player === computer) return result = 'Tie';
+    if (player === selectionArray[(selectionArray.indexOf(computer) + 1) % 3]) return result = win;
+    return result = lose;
 }
 
 let playScore = 5;
