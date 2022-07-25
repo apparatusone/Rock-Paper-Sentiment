@@ -1,9 +1,9 @@
 const selectionArray = ['ROCK', 'PAPER', 'SCISSORS'];
 const mainContainer = document.querySelector("#container");
 const graphicsContainer = document.querySelector("#graphicscon");
-let result = 'default';
-let win = 'You Win!';
-let lose = 'You Lose';
+let result;
+const win = 'You Win!';
+const lose = 'You Lose';
 
 //selects at random from the rock paper scissors array
 function computerSelection() {
@@ -11,6 +11,7 @@ function computerSelection() {
     return comp;
 } 
 
+// determines win, lose or tie
 function gameRules(player, computer) {
     console.log('Player:',player, 'Computer:', computer);
 	if (player === computer) return result = 'Tie';
@@ -415,27 +416,39 @@ async function javaBoy() {
     }   
 
     await fadeout();
-    // return new Promise((resolve) => { resolve(done); });
 }
 
 // javaboy reveal
 
-function initialAnimation() {
-    const animContainer = document.querySelector(".handheld");
-    const img = ["pcb", "extras", "case", "controls"];
 
-    async function outline(done) {
+
+let onceAnimationEnd = (element) => {
+    return new Promise(resolve => {
+      const onAnimationEnd = () => {
+        element.removeEventListener('animationend', onAnimationEnd);
+        resolve();
+      }
+      element.addEventListener('animationend', onAnimationEnd)
+    });
+  }
+
+function initialAnimation() {
+    const animationContainer = document.querySelector(".handheld");
+    const img = ["pcb", "extras", "case", "dpad-01"];
+
+    let outline = async () => {
         svg = document.createElement("object");
         svg.classList.add("cls-1");
         svg.style.position = "absolute";
         svg.setAttribute("type","image/svg+xml");
         svg.setAttribute("data","img/outline.svg");
-        animContainer.append(svg);
-        return new Promise(done => setTimeout(done, 1700));
-    }
+        animationContainer.append(svg);
+    
+        await onceAnimationEnd(svg)
+      }
 
-    async function layers() {
-        await outline(done)
+    let layers = async () => {
+        await outline()
         let i = 1;
         for (const ele of img) {
             svg = document.createElement("object");
@@ -443,16 +456,15 @@ function initialAnimation() {
             svg.classList.add("swipereveal");
             svg.setAttribute("type","image/svg+xml");
             svg.setAttribute("data",`img/${ele}.svg`);
-            animContainer.append(svg);
+            animationContainer.append(svg);
             i++
-            await timer(1000);
+            await onceAnimationEnd(svg)
         }
     }
 
-    // outline();
     layers();
 
-    function timer(ms) { return new Promise(res => setTimeout(res, ms)); }
+    //function timer(ms) { return new Promise(res => setTimeout(res, ms)); }
     return new Promise(done => setTimeout(done, 5700));
 }
 
@@ -462,10 +474,5 @@ async function unhidemenus(...args) {
 }
 
 unhidemenus("#main, #fs, #tb, #pb, #cat, #livecon, #fightmenu, #controls");
-
-// case 83: // S
-//     interval = 5;   
-//     console.log
-// break;
   
   

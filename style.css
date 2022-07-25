@@ -313,9 +313,26 @@ body {
     clip-path: 0;
 }
 
-.swipereveal {
+/* .swipereveal {
     position: absolute;
-    animation: test 1.5s linear;
+    animation: test 1s linear;
+} */
+
+.swipereveal {
+    transform-origin: 8rem 47rem;
+    position: absolute;
+    animation: growshrink .8s cubic-bezier(0.010, 0.025, 0.000, 0.995);
+}
+
+@keyframes growshrink {
+    0% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    100% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
 }
 
 
